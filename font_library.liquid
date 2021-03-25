@@ -1,0 +1,40 @@
+{% comment %} 
+
+About Shopify's Font Library --> https://shopify.dev/tutorials/develop-theme-fonts
+
+Use a style tag, not a style liquid tag, in your code -- be sure to place it above the called font.
+{% endcomment %} 
+<style>{{ section.settings.heading_font | font_face }}</style>
+
+
+<h1 
+    style='font-family:{{section.settings.heading_font.family}};
+           font-weight:{{section.settings.heading_font.weight}};
+           font-style:{{section.settings.heading_font.style}};
+           '
+    >
+    Hello world
+</h1>
+
+
+{% schema %}
+  {
+    "name": "Font Library",
+    "settings": [
+	   {
+          "type": "font_picker",
+          "label": "Heading font", 
+          "id": "heading_font",
+          "default": "helvetica_n4"
+	   }
+    ],
+    "presets": [
+      {
+        "name": "Font Library Test",
+        "category": "CTA button"
+      }
+  ]
+  }
+{% endschema %}
+
+
